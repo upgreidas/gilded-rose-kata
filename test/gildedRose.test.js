@@ -28,7 +28,7 @@ describe('Gilded Rose', () => {
     expect(getFirstItem().quality).toBe(18);
   });
 
-  it('does not decrease quality bellow 0', () => {
+  it('does not decrease quality below 0', () => {
     shop = createShop('Magic Stick', 10, 0);
 
     shop.updateQuality();
@@ -44,7 +44,7 @@ describe('Gilded Rose', () => {
     expect(getFirstItem().quality).toBe(21);
   });
 
-  it('increases quality of Aged Brie by 2 when sellIn value is bellow 0', () => {
+  it('increases quality of Aged Brie by 2 when sellIn value is below 0', () => {
     shop = createShop('Aged Brie', 0);
 
     shop.updateQuality();
@@ -99,5 +99,21 @@ describe('Gilded Rose', () => {
 
     expect(getFirstItem().sellIn).toBe(10);
     expect(getFirstItem().quality).toBe(80);
+  });
+
+  it('decreases quality of conjured item by 2', () => {
+    shop = createShop('Conjured Magic Stick');
+
+    shop.updateQuality();
+
+    expect(getFirstItem().quality).toBe(18);
+  });
+
+  it('decreases quality of conjured item by 4 when sellIn value is less than 0', () => {
+    shop = createShop('Conjured Magic Stick', 0);
+
+    shop.updateQuality();
+
+    expect(getFirstItem().quality).toBe(16);
   });
 });
