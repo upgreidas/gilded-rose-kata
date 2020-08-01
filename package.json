@@ -3,8 +3,9 @@
   "version": "1.0.0",
   "description": "Gilded Rose kata in JavaScript with Jest",
   "scripts": {
-    "start": "node app.js",
-    "generate": "node generator.js input 100000000",
+    "start": "node inventoryGenerator.js input 100000000 && node inventoryUpdater.js",
+    "generate": "node inventoryGenerator.js",
+    "update": "node inventoryUpdater.js",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage"
