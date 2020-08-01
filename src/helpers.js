@@ -11,7 +11,9 @@ const countFileLines = (filePath) => {
 
   return new Promise((resolve, reject) => {
     createReadStream(filePath)
-      .on('error', (e) => reject(e))
+      .on('error', (e) => {
+        reject(e);
+      })
       .on('data', (chunk) => {
         for (let i = 0; i < chunk.length; i += 1) {
           if (chunk[i] === 10) {

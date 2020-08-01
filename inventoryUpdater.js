@@ -37,7 +37,9 @@ const daysToSimulate = process.argv[4] || 5;
   };
 
   createTransformStream(inputFile, outputFile, transformFunction)
-    .catch((e) => console.log(e))
+    .catch((e) => {
+      console.log(e);
+    })
     .then(
       () => {
         ended = true;

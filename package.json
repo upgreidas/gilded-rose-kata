@@ -6,6 +6,7 @@
     "start": "node inventoryGenerator.js input 100000000 && node inventoryUpdater.js",
     "generate": "node inventoryGenerator.js",
     "update": "node inventoryUpdater.js",
+    "lint": "eslint **/*.js",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage"
