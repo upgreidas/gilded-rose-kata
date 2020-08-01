@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "description": "Gilded Rose kata in JavaScript with Jest",
   "scripts": {
-    "generate": "node generator.js generatedInput 100000000",
+    "start": "node app.js",
+    "generate": "node generator.js input 100000000",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage"
@@ -30,6 +31,7 @@
     "jest": "^24.9.0"
   },
   "dependencies": {
-    "cli-progress": "^3.8.2"
+    "cli-progress": "^3.8.2",
+    "csv": "^5.3.2"
   }
 }

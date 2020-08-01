@@ -1,9 +1,9 @@
 const cliProgress = require('cli-progress');
 const fs = require('fs');
 const { Readable } = require('stream');
-const { resolve } = require('path');
+const { join } = require('path');
 
-const OUTPUT_FILENAME = process.argv[2] || 'generatedInput';
+const OUTPUT_FILENAME = process.argv[2] || 'input';
 const MAX_ITEM_COUNT = parseInt(process.argv[3], 10) || 1000000;
 const QUALITY_INTERVAL = [0, 50];
 const SELLINS_INTERVAL = [-1, 10];
@@ -44,7 +44,7 @@ console.log('Generating input file...');
 
 progressBar.start(MAX_ITEM_COUNT, 0);
 
-const output = fs.createWriteStream(resolve(__dirname, 'data', OUTPUT_FILENAME));
+const output = fs.createWriteStream(join(__dirname, 'data', OUTPUT_FILENAME));
 output.on('close', () => {
   ended = true;
 });
