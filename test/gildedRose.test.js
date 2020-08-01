@@ -116,4 +116,31 @@ describe('Gilded Rose', () => {
 
     expect(getFirstItem().quality).toBe(16);
   });
+
+  it('updates items values for 7 days', () => {
+    const items = [
+      new Item('Conjured Magic Stick', 3, 30),
+      new Item('Sulfuras, Hand of Ragnaros', 10, 80),
+      new Item('Backstage passes to a TAFKAL80ETC concert', 12, 10),
+      new Item('Aged Brie', 4, 10),
+      new Item('Magic Stick', 2, 4),
+    ];
+
+    const expectedResults = [
+      { sellIn: -4, quality: 8 },
+      { sellIn: 10, quality: 80 },
+      { sellIn: 5, quality: 24 },
+      { sellIn: -3, quality: 20 },
+      { sellIn: -5, quality: 0 },
+    ];
+
+    for (let i = 0; i < items.length; i += 1) {
+      const item = items[i];
+
+      Shop.updateSingleItem(item, 7);
+
+      expect(item.quality).toBe(expectedResults[i].quality);
+      expect(item.sellIn).toBe(expectedResults[i].sellIn);
+    }
+  });
 });
