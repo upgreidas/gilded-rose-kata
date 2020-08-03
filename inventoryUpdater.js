@@ -15,6 +15,7 @@ const daysToSimulate = process.argv[4] || 5;
   let linesProcessed = 0;
   let totalLineCount;
 
+  // Count input file lines (required for progress tracking)
   try {
     totalLineCount = await countFileLines(inputFile);
   } catch (e) {
@@ -23,6 +24,7 @@ const daysToSimulate = process.argv[4] || 5;
 
   console.log('Generating output file...');
 
+  // Declare function used for transform stream
   const transformFunction = (input) => {
     const item = new Item(input[0], input[2], input[1]);
 
@@ -36,10 +38,8 @@ const daysToSimulate = process.argv[4] || 5;
     return input;
   };
 
+  // Start transform stream as a promise
   createTransformStream(inputFile, outputFile, transformFunction)
-    .catch((e) => {
-      console.log(e);
-    })
     .then(
       () => {
         ended = true;
@@ -49,12 +49,14 @@ const daysToSimulate = process.argv[4] || 5;
       },
     );
 
+  // Implement update progress bar
   const progressBar = new SingleBar({}, Presets.shades_classic);
   progressBar.start(totalLineCount, 0);
 
   const progressInterval = setInterval(() => {
     progressBar.update(linesProcessed);
 
+    // Stop progress bar when transform stream is finished
     if (ended) {
       clearInterval(progressInterval);
       progressBar.stop();
