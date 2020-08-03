@@ -13,7 +13,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/emilybache/GildedRose-Refactoring-Kata.git"
+    "url": "git+https://github.com/upgreidas/gilded-rose-kata.git"
   },
   "keywords": [
     "kata",
@@ -21,11 +21,6 @@
     "gilded-rose"
   ],
   "license": "MIT",
-  "private": true,
-  "bugs": {
-    "url": "https://github.com/emilybache/GildedRose-Refactoring-Kata/issues"
-  },
-  "homepage": "https://github.com/emilybache/GildedRose-Refactoring-Kata",
   "devDependencies": {
     "eslint": "^7.2.0",
     "eslint-config-airbnb-base": "^14.2.0",
